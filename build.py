@@ -755,8 +755,8 @@ class BuildOption:
             # 修改中文字体的字体名称，仅使用Maple Mono CN 或者 Maple Mono NL CN 
             #self.cn_suffix = f"NF{suffix} CN"
             #self.cn_suffix_compact = f"NF{suffix}-CN"
-            self.cn_suffix = f"NF CN"
-            self.cn_suffix_compact = f"NF{suffix}-CN"      
+            self.cn_suffix = f"CN"
+            self.cn_suffix_compact = f"CN"      
         else:
             self.cn_base_font_dir = self.ttf_base_dir
             self.cn_suffix = self.cn_suffix_compact = "CN"
