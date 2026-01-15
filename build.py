@@ -552,17 +552,21 @@ class FontConfig:
     def _update_family_names(self):
         """Update family names based on options."""
         name_arr = [word.capitalize() for word in self.family_name.split(" ")]
-
-        if self.use_normal_preset:
-            name_arr.append("Normal")
+        
+        # kayven
+        # 不在字体名称中添加“Normal”
+        #if self.use_normal_preset:
+        #    name_arr.append("Normal")
 
         if not self.enable_ligature:
             name_arr.append("NL")
 
-        width_name = self.get_width_name()
-        if width_name:
-            name_arr.append(width_name)
-
+        # kayven
+        # 不在字体名称中添加宽度标识(SL/NR)
+        #width_name = self.get_width_name()
+        #if width_name:
+        #    name_arr.append(width_name)
+        
         if self.debug:
             name_arr.append("Debug")
 
@@ -746,8 +750,13 @@ class BuildOption:
         suffix = font_config.get_nf_suffix()
         if font_config.should_build_nf_cn():
             self.cn_base_font_dir = self.output_nf
-            self.cn_suffix = f"NF{suffix} CN"
-            self.cn_suffix_compact = f"NF{suffix}-CN"
+
+            # kayven
+            # 修改中文字体的字体名称，仅使用Maple Mono CN 或者 Maple Mono NL CN 
+            #self.cn_suffix = f"NF{suffix} CN"
+            #self.cn_suffix_compact = f"NF{suffix}-CN"
+            self.cn_suffix = f"NF CN"
+            self.cn_suffix_compact = f"NF{suffix}-CN"      
         else:
             self.cn_base_font_dir = self.ttf_base_dir
             self.cn_suffix = self.cn_suffix_compact = "CN"
